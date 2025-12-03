@@ -35,6 +35,9 @@ button.addEventListener("click", function () {
         todo.removeChild(li)
         todo.removeChild(editbtn)
         todo.removeChild(removebtn)
+        localStorage.removeItem("li")
+        localStorage.removeItem("editedli")
+        localStorage.removeItem("donedLi")
 
 
     })
@@ -49,6 +52,7 @@ checkbox.addEventListener("change", function(){
     if(checkbox.checked){
         li.style.textDecoration = "line-through"
         li.style.color = "green"
+        localStorage.setItem("donedLi", li.innerText)
     }
     else {
         li.style.textDecoration = "none"
@@ -62,6 +66,7 @@ checkbox.addEventListener("change", function(){
     li.append(checkbox)
     todo.append(removebtn)
     input.value = ""
+    localStorage.setItem("li", li.innerText)
 })
 savebtn.addEventListener("click", function () {
     if (!input.value) {
@@ -72,7 +77,7 @@ savebtn.addEventListener("click", function () {
         edittext.innerText = input.value
         input.value = ""
         savebtn.remove()
-        
+        localStorage.setItem("editedli", edittext.innerText)
         edittext.append(checkbox1)
         body.append(button)
     }
