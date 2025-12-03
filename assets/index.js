@@ -56,6 +56,7 @@ checkbox.addEventListener("change", function(){
     }
     else {
         li.style.textDecoration = "none"
+        localStorage.removeItem("donedLi")
         li.style.color = "black"
     }
 })
